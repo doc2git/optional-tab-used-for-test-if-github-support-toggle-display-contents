@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: inline-block;
+            float: left;
+            width: 100px;
+            height: 40px;
+            border: 1px solid #ccc;
+        }
+
+        .content {
+            display: none;
+            clear: both;
+            width: 100%;
+            height: 200px;
+        }
+
+        .content.selected {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<div>
+    <div class="content selected">1</div>
+    <div class="content">2</div>
+    <div class="content">3</div>
+</div>
+</body>
+</html>
+<script>
+    var lists = document.getElementsByTagName('li'),
+        contents = document.getElementsByClassName('content');
+    for (var i = 0; i < lists.length; i++) {
+        var item = lists[i];
+        item.i = i;
+        item.onclick = function () {
+            for(var j = 0; j < contents.length; j++) {
+                contents[j].className = 'content';
+            }
+            contents[this.i].className = 'content selected';
+        }
+    }
+</script>
